@@ -1,0 +1,41 @@
+.match {
+    width: 50%;
+    background-color: #d9b093;
+}
+
+.tourney {
+    width: 80%;
+}
+
+.page-view {
+    width: 60%;
+    margin: auto;
+}
+
+.menu {
+    border-top: 2px dashed black;
+}
+
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-holder button {
+    margin: 10px;
+    width: 200px;
+    height: 50px;
+}
+
+.reset-button button{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    width: 300px;
+    height: 100px;
+}
+
+img {
+    height: 500px;
+    margin: auto;
+}

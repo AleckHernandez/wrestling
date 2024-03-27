@@ -1,0 +1,45 @@
+<div *ngIf="!results" class="flex-container page-view vertical">
+    <div class="flex-child button-holder">
+        <button (click)="toggleCreateMenu()">Toggle Create Menu</button>
+        <button (click)="toggleWrestlerMenu()">Toggle Wrestler Menu</button>
+        <button (click)="useMockWrestlers()">Run with Premade Wrestlers</button>
+        <button *ngIf="getTourneyWrestlers().length > 0" (click)="startNewTournament()">Start Tournament</button>
+    </div>
+    
+    <div *ngIf="createMenu" class="flex-child menu">
+        <app-create-wrestler (wrestlerCreated)="addWrestler($event)"> </app-create-wrestler>
+    </div>
+    
+    <div *ngIf="wrestlerMenu" class="flex-child menu">
+        <h2>Your Wrestlers</h2>
+        <div *ngFor="let wrestler of getTourneyWrestlers(); let i = index">
+            <app-view-wrestler [wrestler]="getTourneyWrestlers()[i]"></app-view-wrestler>
+            <button (click)="removeWrestler(i)">Remove Wrestler</button>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="results" >
+
+    <div class="flex-container tourney center">
+        <div *ngFor="let matchGroup of getMatchGroups(); let i = index" class="flex-child match">
+
+            <div *ngFor="let log of matchGroup" [innerHTML]="log"></div>
+    
+            <div *ngIf="i == getMatchGroups().length - 1">
+                <img src="assets/jumping-gatito.gif" alt="Very happy jumping cat">
+            </div>
+    
+        </div>
+
+        <div class="flex-child reset-button button-holder">
+            <button (click)="reset()">Reset Tournament</button>
+        </div>
+        
+
+    </div>
+
+    
+</div>
+

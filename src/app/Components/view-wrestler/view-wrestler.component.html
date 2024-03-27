@@ -1,0 +1,8 @@
+<div class="view-wrestler">
+    <h3>{{wrestler.name}}</h3>
+    <p>Health: {{wrestler.health}}</p>
+    <div *ngFor="let move of wrestler.moves; let i = index">
+        <p>Move {{i + 1}}: {{move.name}}, Damage: {{move.damage}}, Type: {{move.type}}</p>
+
+    </div>
+</div>

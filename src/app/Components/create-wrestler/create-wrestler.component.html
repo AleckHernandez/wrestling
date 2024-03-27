@@ -1,0 +1,47 @@
+<div>
+    <h2>Create Wrestler</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div>
+            <label>Name:</label>
+            <input type="text" [(ngModel)]="wrestler.name" name="name" required>
+        </div>
+
+        <div>
+            <label>Health:</label>
+            <input type="number"  min="1" [(ngModel)]="wrestler.health" name="health" required>
+        </div>
+      
+        <div *ngFor="let move of wrestler.moves; let i = index">
+            <div>
+                <label>Move {{ i + 1 }}:</label>
+                <input type="text" [(ngModel)]="move.name" name="moveName{{i}}" required>
+            </div>
+
+            <div>
+                <label>Damage:</label>
+                <input type="number" min="1" [(ngModel)]="move.damage" name="moveDamage{{i}}" required>
+            </div>
+            
+            <div>
+                <label>Type:</label>
+                <select [(ngModel)]="move.type" name="moveType{{i}}" required>
+                    <option value="signature">Signature</option>
+                    <option value="finisher">Finisher</option>
+                </select>
+            </div>
+
+            <div>
+                <button *ngIf="wrestler.moves.length > 1" type="button" (click)="removeMove(i)">Remove Move</button>
+            </div>
+            
+            
+        </div>
+
+        <div>
+            <button type="button" (click)="addMove()">Add Move</button>
+        </div>
+        
+        <button type="submit">Create Wrestler</button>
+    </form>
+</div>
+  
